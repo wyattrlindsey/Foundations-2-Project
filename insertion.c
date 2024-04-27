@@ -1,10 +1,14 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
 #include "tree.h"
+#include <stdbool.h>
+
+// Red-Black Tree structure
+typedef struct RedBlackTree {
+    Node *parent;
+} RedBlackTree;
 
 // Function to insert a data into the red-black tree
-void insert(Node* tree, int data) {
+void insert(RedBlackTree* tree, int data) {
     Node* node = createNew(data);
     Node* parent = NULL;
     Node* current = tree->parent;
@@ -30,7 +34,7 @@ void insert(Node* tree, int data) {
 }
 
 // Function to fix violations caused by insertion
-void fixInsertion(RedBlackTree* tree, Node* node) {
+void fixInsertion(RedBlackTree* tree, Node *node) {
     while (node != tree->parent && node->parent->color == 1) {
         if (node->parent == node->parent->parent->left) {
             Node* uncle = node->parent->parent->right;
