@@ -1,11 +1,5 @@
 #include <stdio.h>
-struct Node {
-	int dat;
-	char color;
-	struct Node *left;
-	struct Node *right;
-	struct Node *parent;
-};
+#include "tree.h"
 
 struct Node createNew(int data) {
     struct Node newNode;
