@@ -7,7 +7,7 @@
 struct Node *search(struct Node *root, int data) {
 	struct Node *p;
 
-	p.data = root->data;
+	p->data = root->data;
 
 	while (p != NULL) {
 		int dif = data - p->data;
@@ -16,7 +16,7 @@ struct Node *search(struct Node *root, int data) {
 			return p;
 		}
 
-		p = cmp < 0 ? p->left : p->right;
+		p = dif < 0 ? p->left : p->right;
 	}
 
 	return NULL;
