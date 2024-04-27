@@ -1,18 +1,37 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <bool.h>
+#include <stdbool.h>
 #include "tree.h"
 
-// Function to insert a key into the red-black tree
-void insert(RedBlackTree* tree, int key) {
-    Node* node = createNode(key);
+typedef struct Node {
+	int data;
+    //RED = 1, BLACK = 0
+	bool color;
+	struct Node *left;
+	struct Node *right;
+	struct Node *parent;
+} Node;
+
+Node *createNew(int data) {
+    Node *newNode = (Node *)malloc(sizeof(Node));
+    newNode->data = data;
+    newNode->color = 0;
+    newNode->left = NULL;
+    newNode->right = NULL;
+    newNode->parent = NULL;
+    return newNode;
+}
+
+// Function to insert a data into the red-black tree
+void insert(Node* tree, int data) {
+    Node* node = createNew(data);
     Node* parent = NULL;
-    Node* current = tree->root;
+    Node* current = tree->parent;
 
     // Find the appropriate position for the new node
     while (current != NULL) {
         parent = current;
-        if (key < current->key)
+        if (data < current->data)
             current = current->left;
         else
             current = current->right;
@@ -20,8 +39,8 @@ void insert(RedBlackTree* tree, int key) {
 
     node->parent = parent;
     if (parent == NULL)
-        tree->root = node;
-    else if (key < parent->key)
+        tree->parent = node;
+    else if (data < parent->data)
         parent->left = node;
     else
         parent->right = node;
@@ -31,7 +50,7 @@ void insert(RedBlackTree* tree, int key) {
 
 // Function to fix violations caused by insertion
 void fixInsertion(RedBlackTree* tree, Node* node) {
-    while (node != tree->root && node->parent->color == 'R') {
+    while (node != tree->parent && node->parent->color == 'R') {
         if (node->parent == node->parent->parent->left) {
             Node* uncle = node->parent->parent->right;
             if (uncle != NULL && uncle->color == 'R') {
@@ -66,5 +85,5 @@ void fixInsertion(RedBlackTree* tree, Node* node) {
             }
         }
     }
-    tree->root->color = 'B';
+    tree->parent->color = 'B';
 }

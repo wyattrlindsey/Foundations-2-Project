@@ -10,6 +10,10 @@ typedef struct Node {
 	struct Node *parent;
 } Node;
 
+typedef struct RedBlackTree {
+    Node *parent;
+} RedBlackTree;
+
 Node *createNew(int data) {
     Node *newNode = (Node *)malloc(sizeof(Node));
     newNode->data = data;
