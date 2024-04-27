@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include "search.h"
 #include "tree.h"
+#include "insert.h"
 
-void test_search_empty_tree() {
+void test_search_empty_tree(void) {
     struct Node *root = NULL;
 
     struct Node *result = search(root, 13); 
@@ -14,7 +15,7 @@ void test_search_empty_tree() {
     }
 }
 
-void test_search_one_node_tree() {
+void test_search_one_node_tree(void) {
     struct Node *root = NULL;
     root = insert(root, 23); 
 
@@ -27,7 +28,7 @@ void test_search_one_node_tree() {
     }
 }
 
-void test_search_multiple_node_tree() {
+void test_search_multiple_node_tree(void) {
     struct Node *root = NULL;
     root = insert(root, 23); 
 	root = insert(root, 26);
@@ -39,15 +40,17 @@ void test_search_multiple_node_tree() {
 	struct Node *result3 = search(root, 17);
 	struct Node *result4 = search(root, 34);
 
-    if (result1 != NULL && result1->data == 23 result2 != NULL && result2->data == 26 result3 != NULL && result3->data == 17 result4 != NULL && result4->data == 34) {
+    if (result1 != NULL && result1->data == 23 && result2 != NULL && result2->data == 26 && result3 != NULL && result3->data == 17 && result4 != NULL && result4->data == 34) {
         printf("PASS: Search in multiple-node tree returned the correct node.\n");
     } else {
         printf("FAIL: Search in multiple-node tree did not return the correct node.\n");
     }
 }
 
-int main() {
+int main(void) {
 	test_search_empty_tree();
 	test_search_one_node_tree();
 	test_search_multiple_node_tree();
+
+	return 0;
 }

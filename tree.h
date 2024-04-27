@@ -7,8 +7,8 @@ typedef struct Node {
 	struct Node *parent;
 } Node;
 
-Node* createNew(int data) {};
+Node* createNew(int data);
 
-void rotateLeft(struct Node *node, struct Node **r){};
+void rotateLeft(struct Node *node, struct Node **r);
 
-void rotateRight(struct node *n, struct node **root){};
+void rotateRight(struct Node *n, struct Node **root);
