@@ -2,11 +2,6 @@
 #include "tree.h"
 #include <stdbool.h>
 
-// Red-Black Tree structure
-typedef struct RedBlackTree {
-    Node *parent;
-} RedBlackTree;
-
 // Function to insert a data into the red-black tree
 void insert(RedBlackTree* tree, int data) {
     Node* node = createNew(data);

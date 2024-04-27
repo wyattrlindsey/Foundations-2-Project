@@ -6,6 +6,11 @@ typedef struct Node {
 	struct Node *parent;
 } Node;
 
+// Red-Black Tree structure
+typedef struct RedBlackTree {
+    Node *parent;
+} RedBlackTree;
+
 Node* createNew(int data) {};
 
 void rotateLeft(struct Node *node, struct Node **r){};
