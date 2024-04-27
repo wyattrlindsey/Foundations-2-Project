@@ -59,7 +59,17 @@ void rotateLeft(Node node) {
     *(rightChild->left) = node;
     node.parent = rightChild;
 
-    replaceParentsChild(parent, node, rightChild);
-}
+    if (parent == NULL) {
+        Node root = *rightChild;
+    } else if (compareStruct(*parent->left, node)) {
+        parent->left = rightChild;
+    } else if (compareStruct(*parent->right, node)) {
+        parent->right = rightChild;
+    } else {
+        printf("ERROR: Node is not a child");
+    }
 
-//iteration
+    if (rightChild != NULL) {
+        rightChild->parent = parent;
+    }
+}
