@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "ios": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "search.h": "c",
+        "tree.h": "c"
     }
 }

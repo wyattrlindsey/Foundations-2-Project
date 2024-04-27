@@ -1,0 +1,9 @@
+SEARCH:
+We follow a path from the root to the searched node (or to a NIL leaf). At each level,
+we perform a comparison. The effort for the comparison is constant.
+The search cost is thus proportional to the tree height. We denote by n the number of
+tree nodes. In the "Height of a Red-Black Tree" section, we have recognized that the longest
+path is at most twice as long as the shortest path. It follows that the height of the
+tree is bounded by O(log n).  A formal proof is beyond the scope of this article.
+You can read the proof on Wikipedia.  Thus, the time complexity for finding a node in a
+red-black tree is: O(log n)

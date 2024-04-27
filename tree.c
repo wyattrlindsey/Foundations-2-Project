@@ -1,6 +1,8 @@
 #include <stdio.h>
-#include "tree.h"
+#include <stdlib.h>
 #include <stdbool.h>
+#include "tree.h"
+
 
 Node *createNew(int data) {
     Node *newNode = (Node*)malloc(sizeof(Node));
@@ -18,32 +20,33 @@ bool compareStruct(Node node1, Node node2)
     {
         return true;
     }
+    return false;
 }
 
-void rotateLeft(Node node) {
+void rotateRight(Node node) {
     Node* parent = node.parent;
-    Node* rChild = node.right;
+    Node* lChild = node.left;
 
-    node.right = rChild->left;
-    if (rChild->left != NULL) {
-        *(rChild->left->parent) = node;
+    node.left = lChild->right;
+    if (lChild->right != NULL) {
+    *lChild->right->parent = node;
     }
 
-    *(rChild->left) = node;
-    node.parent = rChild;
+    *(lChild->right) = node;
+    node.parent = lChild;
 
     if (parent == NULL) {
-        Node root = *rChild;
+        Node root = *lChild;
     } else if (compareStruct(*parent->left, node)) {
-        parent->left = rChild;
+        parent->left = lChild;
     } else if (compareStruct(*parent->right, node)) {
-        parent->right = rChild;
+        parent->right = lChild;
     } else {
         printf("ERROR: Node is not a child");
     }
 
-    if (rChild != NULL) {
-        rChild->parent = parent;
+    if (lChild != NULL) {
+        lChild->parent = parent;
     }
 }
 
