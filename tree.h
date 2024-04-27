@@ -1,10 +1,10 @@
-struct Node {
-	int dat;
+typedef struct Node {
+	int data;
 	char color;
 	struct Node *left;
 	struct Node *right;
 	struct Node *parent;
-};
+} Node;
 
 struct Node createNew(int data) {};
 
