@@ -3,25 +3,6 @@
 #include <stdbool.h>
 #include "tree.h"
 
-typedef struct Node {
-	int data;
-    //RED = 1, BLACK = 0
-	bool color;
-	struct Node *left;
-	struct Node *right;
-	struct Node *parent;
-} Node;
-
-Node *createNew(int data) {
-    Node *newNode = (Node *)malloc(sizeof(Node));
-    newNode->data = data;
-    newNode->color = 0;
-    newNode->left = NULL;
-    newNode->right = NULL;
-    newNode->parent = NULL;
-    return newNode;
-}
-
 // Function to insert a data into the red-black tree
 void insert(Node* tree, int data) {
     Node* node = createNew(data);
@@ -50,40 +31,40 @@ void insert(Node* tree, int data) {
 
 // Function to fix violations caused by insertion
 void fixInsertion(RedBlackTree* tree, Node* node) {
-    while (node != tree->parent && node->parent->color == 'R') {
+    while (node != tree->parent && node->parent->color == 1) {
         if (node->parent == node->parent->parent->left) {
             Node* uncle = node->parent->parent->right;
-            if (uncle != NULL && uncle->color == 'R') {
-                node->parent->color = 'B';
-                uncle->color = 'B';
-                node->parent->parent->color = 'R';
+            if (uncle != NULL && uncle->color == 1) {
+                node->parent->color = 0;
+                uncle->color = 0;
+                node->parent->parent->color = 1;
                 node = node->parent->parent;
             } else {
                 if (node == node->parent->right) {
                     node = node->parent;
                     leftRotate(tree, node);
                 }
-                node->parent->color = 'B';
-                node->parent->parent->color = 'R';
+                node->parent->color = 0;
+                node->parent->parent->color = 1;
                 rightRotate(tree, node->parent->parent);
             }
         } else {
             Node* uncle = node->parent->parent->left;
-            if (uncle != NULL && uncle->color == 'R') {
-                node->parent->color = 'B';
-                uncle->color = 'B';
-                node->parent->parent->color = 'R';
+            if (uncle != NULL && uncle->color == 1) {
+                node->parent->color = 0;
+                uncle->color = 0;
+                node->parent->parent->color = 1;
                 node = node->parent->parent;
             } else {
                 if (node == node->parent->left) {
                     node = node->parent;
                     rightRotate(tree, node);
                 }
-                node->parent->color = 'B';
-                node->parent->parent->color = 'R';
+                node->parent->color = 0;
+                node->parent->parent->color = 1;
                 leftRotate(tree, node->parent->parent);
             }
         }
     }
-    tree->parent->color = 'B';
+    tree->parent->color = 0;
 }
