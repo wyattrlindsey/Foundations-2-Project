@@ -7,7 +7,7 @@ struct Node* insert(struct Node* root, int data) {
 
     // If the tree is empty, make the new node the root and color it black
     if (root == NULL) {
-        newNode->color = BLACK;
+        newNode->color = 0;
         return newNode;
     }
 
