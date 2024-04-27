@@ -8,7 +8,5 @@ typedef struct Node {
 } Node;
 
 Node* createNew(int data);
-
-void rotateLeft(struct Node *node, struct Node **r);
-
-void rotateRight(struct Node *n, struct Node **root);
+void rotateLeft(Node node);
+void rotateRight(Node node);
