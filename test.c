@@ -47,10 +47,38 @@ void test_search_multiple_node_tree(void) {
     }
 }
 
+// Function to perform in-order traversal
+void in_order_traversal(Node *node) {
+    if (node == NULL) return;
+    in_order_traversal(node->left);
+    printf("%d ", node->data);
+    in_order_traversal(node->right);
+}
+
+int test_insert() {
+    // Initialize red-black tree
+    struct Node *root = NULL;
+
+    // Insert some nodes into the tree
+    insert(root, 10);
+    insert(root, 20);
+    insert(root, 5);
+    insert(root, 30);
+    insert(root, 15);
+    insert(root, 25);
+
+    // Perform in-order traversal to verify tree structure
+    printf("In-order traversal: ");
+    in_order_traversal(root);
+    printf("\n");
+}
+
+
 int main(void) {
 	test_search_empty_tree();
 	test_search_one_node_tree();
 	test_search_multiple_node_tree();
+    test_insert();
 
 	return 0;
 }
