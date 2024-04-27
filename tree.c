@@ -22,54 +22,54 @@ bool compareStruct(Node node1, Node node2)
 
 void rotateLeft(Node node) {
     Node* parent = node.parent;
-    Node* rightChild = node.right;
+    Node* rChild = node.right;
 
-    node.right = rightChild->left;
-    if (rightChild->left != NULL) {
-        *(rightChild->left->parent) = node;
+    node.right = rChild->left;
+    if (rChild->left != NULL) {
+        *(rChild->left->parent) = node;
     }
 
-    *(rightChild->left) = node;
-    node.parent = rightChild;
+    *(rChild->left) = node;
+    node.parent = rChild;
 
     if (parent == NULL) {
-        Node root = *rightChild;
+        Node root = *rChild;
     } else if (compareStruct(*parent->left, node)) {
-        parent->left = rightChild;
+        parent->left = rChild;
     } else if (compareStruct(*parent->right, node)) {
-        parent->right = rightChild;
+        parent->right = rChild;
     } else {
         printf("ERROR: Node is not a child");
     }
 
-    if (rightChild != NULL) {
-        rightChild->parent = parent;
+    if (rChild != NULL) {
+        rChild->parent = parent;
     }
 }
 
 void rotateLeft(Node node) {
     Node* parent = node.parent;
-    Node* rightChild = node.right;
+    Node* rChild = node.right;
 
-    node.right = rightChild->left;
-    if (rightChild->left != NULL) {
-        *(rightChild->left->parent) = node;
+    node.right = rChild->left;
+    if (rChild->left != NULL) {
+        *(rChild->left->parent) = node;
     }
 
-    *(rightChild->left) = node;
-    node.parent = rightChild;
+    *(rChild->left) = node;
+    node.parent = rChild;
 
     if (parent == NULL) {
-        Node root = *rightChild;
+        Node root = *rChild;
     } else if (compareStruct(*parent->left, node)) {
-        parent->left = rightChild;
+        parent->left = rChild;
     } else if (compareStruct(*parent->right, node)) {
-        parent->right = rightChild;
+        parent->right = rChild;
     } else {
         printf("ERROR: Node is not a child");
     }
 
-    if (rightChild != NULL) {
-        rightChild->parent = parent;
+    if (rChild != NULL) {
+        rChild->parent = parent;
     }
 }
