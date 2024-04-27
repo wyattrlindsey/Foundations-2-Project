@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "tree.h"
+#include "insert.h"
 
 struct Node* insert(struct Node* root, int data) {
     // Create a new node with the given data

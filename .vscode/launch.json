@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/wyattlindsey/Foundations Project/Foundations-2-Project",
+      "program": "/Users/wyattlindsey/Foundations Project/Foundations-2-Project/build/Debug/outDebug"
+    }
+  ]
+}
