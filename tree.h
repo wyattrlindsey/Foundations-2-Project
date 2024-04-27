@@ -1,6 +1,7 @@
 typedef struct Node {
 	int data;
-	char color;
+	//RED = 1, BLACK = 0
+	int color;
 	struct Node *left;
 	struct Node *right;
 	struct Node *parent;
