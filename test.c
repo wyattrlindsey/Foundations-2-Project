@@ -1,7 +1,8 @@
 #include <stdio.h>
-#include "search.h"
 #include "tree.h"
 #include "insert.h"
+#include "search.h"
+#include "test.h"
 
 void test_search_empty_tree(void) {
     struct Node *root = NULL;
@@ -30,7 +31,7 @@ void test_search_one_node_tree(void) {
 
 void test_search_multiple_node_tree(void) {
     struct Node *root = NULL;
-    root = insert(root, 23); 
+    root = insert(root, 23);
 	root = insert(root, 26);
 	root = insert(root, 17);
 	root = insert(root, 34);

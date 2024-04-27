@@ -1,9 +1,11 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "tree.h"
+#include "insert.h"
 
 struct Node* insert(struct Node* root, int data) {
     // Create a new node with the given data
-    struct Node* newNode = create_node(data);
+    struct Node* newNode = createNew(data);
 
     // If the tree is empty, make the new node the root and color it black
     if (root == NULL) {
