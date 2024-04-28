@@ -1,0 +1,30 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+CC	Makefile	/^CC=gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS=-g3 -std=gnu11 ${WARNS}$/;"	m
+LD	Makefile	/^LD=ld$/;"	m
+LIBS	Makefile	/^LIBS=-lpthread -lrt $/;"	m
+Node	tree.h	/^typedef struct Node {$/;"	s
+Node	tree.h	/^} Node;$/;"	t	typeref:struct:Node
+WARNS	Makefile	/^WARNS=-Wall -pedantic -Wextra$/;"	m
+color	tree.h	/^	int color;$/;"	m	struct:Node
+compareStruct	tree.c	/^bool compareStruct(Node node1, Node node2)$/;"	f
+createNew	tree.c	/^Node *createNew(int data) {$/;"	f
+data	tree.h	/^	int data;$/;"	m	struct:Node
+in_order_traversal	test.c	/^void in_order_traversal(Node *node) {$/;"	f
+insert	insert.c	/^struct Node* insert(struct Node* root, int data) {$/;"	f
+left	tree.h	/^	struct Node *left;$/;"	m	struct:Node	typeref:struct:Node::Node
+main	test.c	/^int main(void) {$/;"	f
+parent	tree.h	/^	struct Node *parent;$/;"	m	struct:Node	typeref:struct:Node::Node
+right	tree.h	/^	struct Node *right;$/;"	m	struct:Node	typeref:struct:Node::Node
+rotateLeft	tree.c	/^void rotateLeft(Node node) {$/;"	f
+rotateRight	tree.c	/^void rotateRight(Node node) {$/;"	f
+search	search.c	/^struct Node *search(struct Node *root, int data) {$/;"	f
+test_insert	test.c	/^void test_insert() {$/;"	f
+test_search_empty_tree	test.c	/^void test_search_empty_tree(void) {$/;"	f
+test_search_multiple_node_tree	test.c	/^void test_search_multiple_node_tree(void) {$/;"	f
+test_search_one_node_tree	test.c	/^void test_search_one_node_tree(void) {$/;"	f

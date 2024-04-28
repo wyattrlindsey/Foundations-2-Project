@@ -56,7 +56,7 @@ void in_order_traversal(Node *node) {
     in_order_traversal(node->right);
 }
 
-int test_insert() {
+void test_insert() {
     // Initialize red-black tree
     struct Node *root = NULL;
 
