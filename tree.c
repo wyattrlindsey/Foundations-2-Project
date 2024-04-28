@@ -7,7 +7,7 @@
 Node *createNew(int data) {
     Node *newNode = (Node*)malloc(sizeof(Node));
     newNode->data = data;
-    newNode->color = 0;
+    newNode->color = 1;
     newNode->left = NULL;
     newNode->right = NULL;
     newNode->parent = NULL;
