@@ -31,7 +31,7 @@ tree.o: tree.c
 %.o:%.c *.h
 	${CC} ${CFLAGS} -c $< -o $@
 
-final.zip: makefile *.h *.c *.s *.o peformance_analysis_insert.txt peformance_analysis.txt
+final.zip: makefile *.h *.c *.s *.o peformance_analysis_insert.txt peformance_analysis.txt README
 	# zips all required files
 	zip $@ $^ 
 
