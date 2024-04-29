@@ -57,15 +57,15 @@ void test_search_multiple_node_tree(void) {
 // }
 // Function to print the red-black tree in inorder traversal
 void in_order_traversal(Node* root) {
-    char color_letter = 'R';
+    char colorID = 'R';
     if (root != NULL) {
         in_order_traversal(root->left);
         if(root->color == 1) {
-            color_letter = 'R';
+            colorID = 'R';
         } else {
-            color_letter = 'B';
+            colorID = 'B';
         }
-        printf("%d (%c) ", root->data, color_letter);
+        printf("%d (%c) ", root->data, colorID);
         in_order_traversal(root->right);
     }
 }

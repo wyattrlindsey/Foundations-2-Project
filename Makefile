@@ -30,3 +30,27 @@ tree.o: tree.c
 #It needs all 4 warnings (see WARNS variable defined above)
 %.o:%.c *.h
 	${CC} ${CFLAGS} -c $< -o $@
+
+final.zip: makefile *.h *.c *.s *.o peformance_analysis_insert.txt peformance_analysis.txt
+	# zips all required files
+	zip $@ $^ 
+
+	# self-test is required: first remove old install folder
+	rm -rf install
+	# create the install folder
+	mkdir install
+	# unzip the install folder
+	unzip final.zip -d install
+
+	# make all the other things that get graded too (never the zip!) examples below
+
+	# LOOK FOR ERRORS BELOW here
+	make -C install -r tags
+	make -C install -r project
+
+	# LOOK FOR BUILD ERRORS ABOVE HERE
+	install/tags
+	install/project
+
+	# Finally: remove install folder so we don't accidently use it
+	rm -rf install
