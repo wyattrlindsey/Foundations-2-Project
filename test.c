@@ -48,6 +48,7 @@ void test_search_multiple_node_tree(void) {
     }
 }
 
+//orders red black tree in-order
 void in_order_traversal(Node* root) {
     char colorID = 'R';
     if (root != NULL) {
@@ -62,6 +63,7 @@ void in_order_traversal(Node* root) {
     }
 }
 
+//Checks validity of red black tree
 int check_tree(Node* root) {
 
     //initializing variables for counting black nodes recursively
@@ -70,51 +72,52 @@ int check_tree(Node* root) {
 
     //root can't be null
     if(root == NULL) {
-        printf("\nINSERTION FAILED: root is null");
+        //INSERTION FAILED: root is null
         return 0;
     }
 
     //nodes color has to be 1 or 0 (red or black)
     if(root->color != 1 && root->color != 0) {
-        printf("INSERTION FAILED: Node #%d has an invalid color type", root->data);
+        //INSERTION FAILED: Node #%d has an invalid color type
         return 0;
     }
 
     //root node MUST be black
     if(root->color != 0) {
-        printf("INSERTION FAILED: Root node MUST be black", root->data);
+        //INSERTION FAILED: Root node MUST be black
         return 0;
     }
 
-    //red nodes cannot have red children
-    if (root->left != NULL && root->left->color == 1) {
-        printf("INSERTION FAILED: Left child of node %d is red\n", root->data);
-        return 0;
-    }
 
     //red nodes cannot have red children
-    if (root->right != NULL && root->right->color == 1) {
-        printf("INSERTION FAILED: Right child of node %d is red\n", root->data);
-        return 0;
+    if(root->color == 1) {
+        if (root->right != NULL && root->right->color == 1) {
+            //red nodes cannot have red children
+            if (root->left != NULL && root->left->color == 1) {
+                //INSERTION FAILED red parent can't have two red kids
+                return 0;
+            }
+        }
     }
 
     //checking for same number of black nodes
     left_black_nodes = check_tree(root->left);
     right_black_nodes = check_tree(root->right);
     if (left_black_nodes != right_black_nodes) {
-        printf("INSERTION FAILED: Uneven number of black nodes\n", root->data);
+        //INSERTION FAILED: Uneven number of black nodes
         return 0;
     }
-
     // Return the black height of the subtree rooted at this node
     return (root->color == 0) ? left_black_nodes + 1 : left_black_nodes;
 }
 
+//testing tree with multi node to test criteria
 void test_insert_multi_node() {
-    // Initialize rb tree
+    //Initialize rb tree
     struct Node *root = NULL;
+    printf("\nChecking a tree with multiple nodes...\n");
     
-    // insert multiple nodes
+    //Insert multiple nodes
     root = insert(root, 10);
     root = insert(root, 5);
     root = insert(root, 15);
@@ -124,7 +127,7 @@ void test_insert_multi_node() {
     if(check_tree(root)) {
         printf("PASS: Insert in multiple-node tree passed criteria, Red Black tree is valid\n");
     } else {
-        printf("FAIL: (THIS IS THE EXPECTED CASE) Insert in multiple-node tree failed criteria, Red Black tree is invalid\n");
+        printf("FAIL: Insert in multiple-node tree failed criteria, Red Black tree is invalid\n");
     }
 
     // Perform in-order traversal to verify tree structure
@@ -134,19 +137,20 @@ void test_insert_multi_node() {
 
 }
 
-
+//testing tree with one node to test criteria
 void test_insert_one_node() {
     // Initialize rb tree
     struct Node *root = NULL;
+    printf("\nChecking a tree with one node...\n");
 
     //insert one node
     root = insert(root, 10);
 
     //check tree
     if (check_tree(root)) {
-        printf("PASS: Insert in one tree passed criteria, Red Black tree is valid\n");
+        printf("PASS: Insert in tree with one node, tree passed criteria, Red Black tree is valid\n");
     } else {
-        printf("FAIL: Insert in one tree failed criteria, Red Black tree is invalid\n");
+        printf("FAIL: Insert in tree with one nodem, tree failed criteria, Red Black tree is invalid\n");
     }
 
     // Perform in-order traversal to verify tree structure
@@ -155,20 +159,21 @@ void test_insert_one_node() {
     printf("\n");
 }
 
+//testing tree with no nodes to test criteria
 void test_insert_no_nodes() {
     // Initialize rb tree
     struct Node *root = NULL;
-    //root = insert(root, NULL);
 
+    printf("\nChecking a tree with no nodes...\n");
 
     if (check_tree(root)) {
-        printf("\nFAIL: Insert in empty tree passed criteria when Red Black tree should NOT be valid\n");
+        printf("FAIL: Insert in empty tree passed criteria when Red Black tree should NOT be valid\n");
     } else {
-        printf("\nPASS: Insert in empty tree failed criteria as expected, Red Black tree is invalid\n");
+        printf("PASS: Insert in empty tree failed criteria as expected, Red Black tree is invalid\n");
     }
 
     // Perform in-order traversal to verify tree structure
-    printf("In-order traversal test for one node tree (should be empty): ");
+    printf("In-order traversal test for one node tree (should be empty): \n");
     in_order_traversal(root);
 }
 
