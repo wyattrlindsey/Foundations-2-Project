@@ -1,16 +1,6 @@
-Insert:
+INSERT:
 
-For this insert function our first step is to perform a search. The search cost is O(logn), as seen in class. 
-The next step is to insert a node, which takes constant time and is therefore in O(1).Next we go through the 
-tree and ensure all red black tree rules are followed. To do so, we start at the node we inserted to move up 
-through the tree, checking each node on our way to the root. The rules of red black tree that need to be checked 
-are as follows:
-
-1. Check color of parent node
-2. Determine "uncle" node and check its color
-3. Recoloring one up to three nodes
-4. Performing one or two rotations
-
-All of these steps take constant time, O(1). The total runtime for checking for each of these rules at every node 
-is proportional to the trees height. Therefore the time complexity for inserting a node into a red black tree 
-is O(log n)
+To insert a node in the red-black tree, we need to search for the right position, which is O(logn), as seen in class. 
+Then,inserting the node takes constant time.  Finally, we need to check that all of the red black tree rules are followed.
+So, we need to check the color of parent node, check the "uncle" node, recolor 1-3 nodes, or do 1-2 rotations.
+These all take constant time so the total runtime for intserion is O(log n).
